@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/card_border"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_item_notice_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notice Title"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorPrimary"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/tv_item_notice_priority"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tv_item_notice_priority"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HIGH"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/error"
+                android:background="#FFEBEE"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_item_notice_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Description of the notice goes here..."
+            android:textSize="13sp"
+            android:textColor="@color/grey_800"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:id="@+id/tv_item_notice_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Published: 2026-07-15"
+            android:textSize="11sp"
+            android:textColor="@color/grey_600"
+            android:layout_marginTop="12dp" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

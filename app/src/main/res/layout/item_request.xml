@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/card_border"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_req_student"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resident: John Doe"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/grey_800"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/tv_req_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PENDING"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/warning"
+                android:background="#FFF3E0"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="2dp"
+                android:layout_alignParentEnd="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_req_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title: Broken Chair in Room A-101"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorPrimary"
+            android:layout_marginTop="6dp" />
+
+        <TextView
+            android:id="@+id/tv_req_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Details: The wooden leg of the chair snapped. Please replace."
+            android:textSize="13sp"
+            android:textColor="@color/grey_600"
+            android:layout_marginTop="4dp" />
+
+        <!-- Optional date range for Leaves -->
+        <TextView
+            android:id="@+id/tv_req_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Dates: 2026-07-20 to 2026-07-22"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:textColor="@color/grey_600"
+            android:layout_marginTop="4dp"
+            android:visibility="gone" />
+
+        <!-- Admin Quick Action buttons -->
+        <LinearLayout
+            android:id="@+id/layout_req_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:gravity="end">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_req_reject"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:textColor="@color/error"
+                app:strokeColor="@color/error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reject"
+                android:layout_marginEnd="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_req_approve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Approve / Resolve" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

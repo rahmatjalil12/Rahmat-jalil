@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Top Admin Header Toolbar Area -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/card_border"
+        app:cardBackgroundColor="@color/background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="Admin Dashboard"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/on_background" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_admin_logout"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                app:icon="@drawable/ic_logout"
+                app:iconTint="@color/primary"
+                app:iconSize="24dp"
+                android:contentDescription="Logout" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Material TabLayout for Panel Switching -->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/admin_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="?attr/colorPrimary"
+        app:tabIndicatorColor="?attr/colorPrimary">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Overview Stats" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hostels &amp; Rooms" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Requests" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Staff &amp; Assets" />
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Content Sections frame (Managed inside Java Controller by turning views visibility GONE/VISIBLE) -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- SECTION 1: Stats Overview Scroll -->
+        <ScrollView
+            android:id="@+id/scroll_overview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Sleek Hero Summary Section matching HTML Theme -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="28dp"
+                    app:strokeWidth="0dp"
+                    app:cardBackgroundColor="@color/sleek_purple_container"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Occupancy Rate"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/sleek_purple_on_container"
+                            android:alpha="0.8" />
+
+                        <TextView
+                            android:id="@+id/tv_hero_occupancy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="92.4%"
+                            android:textSize="36sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/sleek_purple_on_container"
+                            android:layout_marginTop="4dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="842 Students"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/sleek_purple_on_container"
+                                android:background="#33FFFFFF"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="4dp"
+                                android:layout_marginEnd="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="12 Empty Rooms"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/sleek_purple_on_container"
+                                android:background="#33FFFFFF"
+                                android:paddingHorizontal="12dp"
+                                android:paddingVertical="4dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Real-Time Operation Analytics"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/grey_800"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Double Stats Cards Grid -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/sleek_border">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <FrameLayout
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher_background"
+                                android:backgroundTint="@color/sleek_purple_container"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_student"
+                                    app:tint="@color/sleek_purple_on_container" />
+                            </FrameLayout>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Residents" android:textSize="11sp" android:textColor="@color/grey_600" android:textStyle="bold" android:textAllCaps="true"/>
+                            <TextView android:id="@+id/tv_stat_students" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/grey_800" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/sleek_border">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <FrameLayout
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher_background"
+                                android:backgroundTint="@color/sleek_purple_container"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_room"
+                                    app:tint="@color/sleek_purple_on_container" />
+                            </FrameLayout>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Active Blocks" android:textSize="11sp" android:textColor="@color/grey_600" android:textStyle="bold" android:textAllCaps="true"/>
+                            <TextView android:id="@+id/tv_stat_blocks" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/grey_800" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/sleek_border">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <FrameLayout
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher_background"
+                                android:backgroundTint="@color/sleek_purple_container"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_room"
+                                    app:tint="@color/sleek_purple_on_container" />
+                            </FrameLayout>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Total Rooms" android:textSize="11sp" android:textColor="@color/grey_600" android:textStyle="bold" android:textAllCaps="true"/>
+                            <TextView android:id="@+id/tv_stat_rooms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/grey_800" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/sleek_border">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <FrameLayout
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher_background"
+                                android:backgroundTint="@color/sleek_purple_container"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_dashboard"
+                                    app:tint="@color/sleek_purple_on_container" />
+                            </FrameLayout>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Beds Allocated" android:textSize="11sp" android:textColor="@color/grey_600" android:textStyle="bold" android:textAllCaps="true"/>
+                            <TextView android:id="@+id/tv_stat_allocations" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/grey_800" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/sleek_border">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <FrameLayout
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher_background"
+                                android:backgroundTint="@color/sleek_pink_container"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_complaint"
+                                    app:tint="@color/sleek_pink_on_container" />
+                            </FrameLayout>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Complaints" android:textSize="11sp" android:textColor="@color/error" android:textStyle="bold" android:textAllCaps="true"/>
+                            <TextView android:id="@+id/tv_stat_complaints" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/error" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardCornerRadius="16dp"
+                        app:cardBackgroundColor="@color/white"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="@color/sleek_border">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+                            <FrameLayout
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:background="@drawable/ic_launcher_background"
+                                android:backgroundTint="@color/sleek_purple_container"
+                                android:layout_marginBottom="8dp">
+                                <ImageView
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/ic_staff"
+                                    app:tint="@color/sleek_purple_on_container" />
+                            </FrameLayout>
+                            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Active Wardens" android:textSize="11sp" android:textColor="@color/grey_600" android:textStyle="bold" android:textAllCaps="true"/>
+                            <TextView android:id="@+id/tv_stat_staff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0" android:textSize="24sp" android:textStyle="bold" android:textColor="@color/grey_800" android:layout_marginTop="4dp"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- Quick Export Student List Report Card - Sleek Pink M3 Design -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="28dp"
+                    app:strokeWidth="0dp"
+                    app:cardBackgroundColor="@color/sleek_pink_container"
+                    android:layout_marginBottom="16dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Database Administration Tools" android:textSize="15sp" android:textStyle="bold" android:textColor="@color/sleek_pink_on_container"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Generate report sheets, back up relational schema, or clear temporary cache instantly." android:textSize="12sp" android:textColor="@color/sleek_pink_on_container" android:alpha="0.8" android:layout_marginTop="4dp"/>
+                        
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="16dp"
+                            android:gravity="end">
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_backup_db"
+                                style="@style/Widget.Material3.Button.TextButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/sleek_pink_on_container"
+                                android:text="Backup DB" />
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_export_report"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/white"
+                                android:backgroundTint="@color/primary"
+                                android:text="Export PDF Report"
+                                android:layout_marginStart="8dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- SECTION 2: Hostel, Blocks and Rooms -->
+        <ScrollView
+            android:id="@+id/scroll_hostels"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Block Creator Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_border"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginBottom="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Create Hostel Block" android:textSize="14sp" android:textStyle="bold" android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/et_block_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Block Name (e.g. Block C)"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_block_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Block Type (e.g. Boys, Girls)"
+                            android:layout_marginTop="8dp"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_create_block"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Insert Block"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Room Creator Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_border"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginBottom="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Create Hostel Room" android:textSize="14sp" android:textStyle="bold" android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/et_room_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Room Number (e.g. A-302)"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_room_capacity"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Bed Capacity (e.g. 2)"
+                            android:layout_marginTop="8dp"
+                            android:inputType="number"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_room_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Room Type (e.g. Double, Triple)"
+                            android:layout_marginTop="8dp"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_create_room"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Insert Room"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Allocations Coordinator -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_border"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Beds &amp; Room Allocations" android:textSize="14sp" android:textStyle="bold" android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/et_alloc_student_reg"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Student Reg Number"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_alloc_room_num"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Room Number to Assign"
+                            android:layout_marginTop="8dp"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="12dp">
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_dealloc_student"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Deallocate"
+                                android:layout_marginEnd="4dp"/>
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_alloc_student"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Allocate Bed"
+                                android:layout_marginStart="4dp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- SECTION 3: Complaints, Leaves, Notices -->
+        <LinearLayout
+            android:id="@+id/layout_requests"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <!-- Title switcher -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_req_switch_complaints"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Complaints"
+                    android:layout_marginEnd="4dp"/>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_req_switch_leaves"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Leaves"
+                    android:layout_marginStart="4dp"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_admin_requests"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingBottom="80dp"/>
+        </LinearLayout>
+
+        <!-- SECTION 4: Staff, Inventory, Notice Publisher -->
+        <ScrollView
+            android:id="@+id/scroll_staff_assets"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Notice publisher -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_border"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginBottom="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Publish Official Notice" android:textSize="14sp" android:textStyle="bold" android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/et_notice_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Notice Title"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_notice_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="80dp"
+                            android:hint="Description / Instructions"
+                            android:layout_marginTop="8dp"
+                            android:gravity="top"
+                            android:padding="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_publish_notice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Broadcast Notice"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Fee Creator Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_border"
+                    app:cardBackgroundColor="@color/white"
+                    android:layout_marginBottom="12dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Issue Resident Fee Item" android:textSize="14sp" android:textStyle="bold" android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/et_fee_student_reg"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Student Reg Number"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_fee_amount"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Amount (e.g. 12000)"
+                            android:layout_marginTop="8dp"
+                            android:inputType="numberDecimal"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_fee_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Fee Category (e.g. Hostel Fee, Mess)"
+                            android:layout_marginTop="8dp"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_create_fee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Charge Resident"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Inventory Item creator -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="14dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_border"
+                    app:cardBackgroundColor="@color/white">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Add Inventory Asset" android:textSize="14sp" android:textStyle="bold" android:textColor="?attr/colorPrimary" android:layout_marginBottom="8dp"/>
+                        <EditText
+                            android:id="@+id/et_asset_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Asset Name (e.g. Desk Fan)"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_asset_category"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Category (e.g. Electrical)"
+                            android:layout_marginTop="8dp"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <EditText
+                            android:id="@+id/et_asset_stock"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:hint="Initial Stock Count"
+                            android:layout_marginTop="8dp"
+                            android:inputType="number"
+                            android:paddingHorizontal="12dp"
+                            android:background="@drawable/ic_launcher_background"
+                            android:backgroundTint="@color/grey_100"
+                            android:textSize="14sp"/>
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_create_asset"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Register Asset"
+                            android:layout_marginTop="12dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,6 @@
+{
+  "name": "Hostel Manager",
+  "description": "A production-grade, offline-first Hostel Management System using SQLite and Java.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

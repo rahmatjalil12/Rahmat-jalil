@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Premium ERP Purple Material 3 Palette -->
+    <color name="primary">#5E35B1</color> <!-- Deep Purple -->
+    <color name="primary_variant">#4527A0</color>
+    <color name="on_primary">#FFFFFF</color>
+    
+    <color name="secondary">#7E57C2</color> <!-- Secondary Purple -->
+    <color name="on_secondary">#FFFFFF</color>
+    
+    <color name="background">#F5F5F5</color> <!-- Premium Light Grey Background -->
+    <color name="surface">#FFFFFF</color>
+    <color name="on_background">#212121</color> <!-- Deep neutral dark text -->
+    <color name="on_surface">#212121</color>
+    
+    <!-- Status, Alerts & Theme Containers -->
+    <color name="success">#2E7D32</color>
+    <color name="warning">#EF6C00</color>
+    <color name="error">#C62828</color> <!-- M3 standard error -->
+    <color name="info">#1565C0</color>
+    
+    <!-- Custom Sleek Theme Containers -->
+    <color name="sleek_purple_container">#EDE7F6</color> <!-- Material Purple 50 -->
+    <color name="sleek_purple_on_container">#311B92</color> <!-- Deepest Purple -->
+    <color name="sleek_accent_container">#D1C4E9</color> <!-- Material Purple 100 -->
+    <color name="sleek_accent_on_container">#4527A0</color>
+    <color name="sleek_pink_container">#F3E5F5</color> <!-- Lavender 50 -->
+    <color name="sleek_pink_on_container">#4A148C</color>
+    <color name="sleek_border">#D1C4E9</color>
+    <color name="sleek_nav_bg">#EDE7F6</color>
+    
+    <!-- Neutral Tones (Styled to Sleek Palette) -->
+    <color name="grey_100">#F5F5F5</color> <!-- Neutral light grey -->
+    <color name="grey_300">#E0E0E0</color> <!-- Mid light grey -->
+    <color name="grey_600">#757575</color> <!-- Slate medium grey -->
+    <color name="grey_800">#424242</color>
+    <color name="black">#FF212121</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Decorative overlays -->
+    <color name="card_border">#D1C4E9</color> <!-- Purple slate border -->
+    <color name="ripple_color">#205E35B1</color>
+</resources>
